@@ -1,6 +1,6 @@
 <?php
 /**
-* 短信接口精简代码整理（仅仅用于给家中国房地产网）
+* 短信接口精简代码整理
 * 备注：
 * 原SDK里有接口日志写文件的操作，且调用了其他类文件，实际上接口日志存入数据库、缓存或者队列中的场景更多，所以去掉了这部分的逻辑。
 * 源码都是开放的，感觉不放心的话，自己可以和SDK源文件进行比对。
@@ -11,9 +11,6 @@
 */
 require('request/AlibabaAliqinFcSmsNumSendRequest.php');
 require('TopClient.php');
-
-var_dmup($_POST['username']);
-exit;
 
 	$c = new TopClient;
  	$c->appkey = '2344504911';
