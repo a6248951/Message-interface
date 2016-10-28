@@ -6,15 +6,15 @@
 * 源码都是开放的，感觉不放心的话，自己可以和SDK源文件进行比对。
 *
 * @author: iwen fang 基于阿里大鱼SDK（版本：top-sdk-php-20151012）小修改，自己修改传入的参数值后测试，有问题联系我。请熟读文档，功能很简单，不要想复杂了，不要忽略文档用现成的。
-* @email: ceophp@163.com
+* @email: 2643052714@qq.com
 * @date 2016-08-31 19:55
 */
 require('request/AlibabaAliqinFcSmsNumSendRequest.php');
 require('TopClient.php');
 
-	$c = new TopClient;
- 	$c->appkey = '2344504911';
-   	$c->secretKey = '7cc48a70df1fb9cbcb7c55c744e3877511';
+    $c = new TopClient;
+    $c->appkey = '2344504911';
+    $c->secretKey = '7cc48a70df1fb9cbcb7c55c744e3877511';
 
     $req = new AlibabaAliqinFcSmsNumSendRequest;
     $str = rand(1000,9999);
@@ -28,26 +28,18 @@ require('TopClient.php');
 
     $resp = $c->execute($req);
     $response = json_decode($resp, true);
-   //var_dump($response);
-    
 	//返回值自己按照需要处理！
     if(!empty($response['alibaba_aliqin_fc_sms_num_send_response'])){
     		//发送成功
-    		$data = $response['alibaba_aliqin_fc_sms_num_send_response']['result'];
-			//return $data;
-            //echo "<pre>";
-           // var_dump($data);
-          
+    	    $data = $response['alibaba_aliqin_fc_sms_num_send_response']['result'];
             if($data['err_code'] == 0){
                 echo '短信发送成功，您的验证码是'.$str.'';
             }else{
                 echo "短信发送失败";
             }
-            //echo "</pre>";
 	}
 	if(!empty($response['error_response'])){
 		//发送异常
 		$data = $response['error_response'];
 		var_dump($data);
 	}
-    //var_dump($data);
